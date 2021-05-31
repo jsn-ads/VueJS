@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="app">
-        <p>Curso: {{curso}} | {{instrutor()}}</p>
+       <a v-bind:href="docs">Youtube</a>
     </div>
     <script src="../../FrameWork/vue.js"></script>
     <script>
@@ -16,13 +16,8 @@
         new Vue({
             el: '#app',
             data: {
-                curso: 'VueJS',
-                nome: 'Jose Alves'
-            },methods: {
-                instrutor: function(){
-                    return this.nome;
-                }
-            },
+                docs: 'https://www.youtube.com'
+            }
         });
 
     </script>
