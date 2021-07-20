@@ -1,3 +1,5 @@
+<!-- O V-ONCE ele pega o valor do objeto pela primeira vez e mantem aquele valor estatico , mesmo que esse objeto tenha alguma alteração -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
