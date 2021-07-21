@@ -14,8 +14,6 @@
         <p> qtd cliques : {{c}}</p>
     </div>
 
-
-
     <script src="../../FrameWork/vue.js"></script>
 
     <script type="text/javascript">
