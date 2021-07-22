@@ -8,21 +8,21 @@
     <title>Eventos de Mouse</title>
 </head>
 <body>
-    <div id="app">
-        <button v-on:click.right.prevent="clicou">click Direito</button>
-        <button v-on:click.middle="clicou">click Central</button>
-        <button v-on:click.left="clicou">click Esquerdo</button>
-    </div>
-    <script src="../../FrameWork/vue.js"></script>
-    <script type="text/javascript">
-        new Vue({
-            el:"#app",
-            methods:{
-                clicou: function (event){
-                    console.log(event.button + ' pressionado!');
-                }
+<div id="app">
+    <button v-on:click.right.prevent="clicou">click Direito</button>
+    <button v-on:click.middle="clicou">click Central</button>
+    <button v-on:click.left="clicou">click Esquerdo</button>
+</div>
+<script src="../../FrameWork/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el:"#app",
+        methods:{
+            clicou: function (event){
+                console.log(event.button + ' pressionado!');
             }
-        });
-    </script>
+        }
+    });
+</script>
 </body>
 </html>
