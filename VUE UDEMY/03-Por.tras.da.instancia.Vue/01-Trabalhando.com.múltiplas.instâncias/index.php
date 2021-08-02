@@ -10,55 +10,55 @@
 </head>
 <body>
 
-    <div id="app">
-        <h3 v-if="mostrarMessagem">Titulo Alterado</h3>
-        <p>Titulo: {{titulo}}</p>
-        <p>Titulo Lowe Case : {{tituloLowerCase}}</p>
-        <input v-model="novoTitulo">
-        <button @click="alterar">AlterarTitulo</button>
-    </div>
+<div id="app">
+    <h3 v-if="mostrarMessagem">Titulo Alterado</h3>
+    <p>Titulo: {{titulo}}</p>
+    <p>Titulo Lowe Case : {{tituloLowerCase}}</p>
+    <input v-model="novoTitulo">
+    <button @click="alterar">AlterarTitulo</button>
+</div>
 
-    <div id="app2">
-        <p>Titulo: {{titulo}}</p>
-    </div>
+<div id="app2">
+    <p>Titulo: {{titulo}}</p>
+</div>
 
-    <script type="text/javascript">
-        new Vue({
-            el:"#app",
-            data:{
-                titulo: 'CURSO DE VUE',
-                novoTitulo: '',
-                mostrarMessagem : false
-            },
-            computed:{
-                tituloLowerCase: function (){
-                    return this.titulo.toLocaleLowerCase().split(' ').join('-');
-                }
-            },
-            methods:{
-                alterar : function (){
-                    this.titulo = this.novoTitulo;
-                    this.novoTitulo = "";
-                }
-            },
-            watch:{
-                titulo: function (){
-                    this.mostrarMessagem = true;
-                    var self = this;
-                    setTimeout(function (){
-                        self.mostrarMessagem = false;
-                    }, 4000);
-                }
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            titulo: 'CURSO DE VUE',
+            novoTitulo: '',
+            mostrarMessagem: false
+        },
+        computed: {
+            tituloLowerCase: function () {
+                return this.titulo.toLocaleLowerCase().split(' ').join('-');
             }
-        });
-
-        new Vue({
-            el:"#app2",
-            data:{
-                titulo : "Curso de LARAVEL"
+        },
+        methods: {
+            alterar: function () {
+                this.titulo = this.novoTitulo;
+                this.novoTitulo = "";
             }
-        });
+        },
+        watch: {
+            titulo: function () {
+                this.mostrarMessagem = true;
+                var self = this;
+                setTimeout(function () {
+                    self.mostrarMessagem = false;
+                }, 4000);
+            }
+        }
+    });
 
-    </script>
+    var vm2 = new Vue({
+        el: "#app2",
+        data: {
+            titulo: "Curso de LARAVEL"
+        }
+    });
+
+</script>
 </body>
 </html>
