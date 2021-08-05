@@ -19,3 +19,8 @@
             ex: @vue/cli-plugin-"exemplo"
         comunidade 
             ex: vue-cli-plugin-"exemplo" / vue add "exemplo"
+            vue add vuetify
+
+4 - Instalando pacotes
+        npm i -D sass-loader node-sass
+	npm i -g @vue/cli-service-global
