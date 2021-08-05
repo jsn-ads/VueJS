@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-Vue.component('vue-component', {
+const vuecomponent = {
   data: function () {
     return {
       titulo: "Curso de VueJS",
@@ -17,8 +17,11 @@ Vue.component('vue-component', {
                 <button @click="contar">clique {{contador}}</button>
              </div>
              `
-})
+}
 
 new Vue({
-  el: "#app"
+  el: "#app",
+  components: {
+    'vue-component' : vuecomponent
+  }
 })

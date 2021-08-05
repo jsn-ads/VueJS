@@ -22,5 +22,5 @@
             vue add vuetify
 
 4 - Instalando pacotes
-        npm i -D sass-loader node-sass
+    npm i -D sass-loader node-sass
 	npm i -g @vue/cli-service-global
