@@ -60,7 +60,6 @@
             }
         });
     </script>
->>>>>>> c479b8c8eb5ad87af934c2fa2b03eaeb154b607e
 
 </body>
 </html>
