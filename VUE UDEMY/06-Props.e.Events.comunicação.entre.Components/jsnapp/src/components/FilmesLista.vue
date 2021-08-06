@@ -8,16 +8,16 @@
 
       <ul class="list-group list-group-flush">
 
-        <FilmesListaIten v-for="filme in lista" :key="filme.id" v-bind="filme"/>
+        <FilmesListaIten v-for="filme in lista" :key="filme.id" :filme="filme" :class="aplicar(filme)" @selecionado="filmeSelect = $event"/>
        
-
       </ul>
+
     </div>
 
     <!-- coluna 2 -->
     <div class="col-4">
 
-      <FilmesListaItenInfo/>
+      <FilmesListaItenInfo :filme="filmeSelect"/>
 
     </div>
 
@@ -42,7 +42,15 @@ export default {
         {id:3, titulo:"CHELSEA CHAMPIONS", ano:2021},
         {id:4, titulo:"VUE DEIXA LOUCO", ano:2021},
         {id:5, titulo:"BATMAN", ano:2009},
-      ]
+      ],
+      filmeSelect: undefined
+    }
+  },
+  methods: {
+    aplicar(parans){
+      return {
+        active: this.filmeSelect && this.filmeSelect.id === parans.id
+      }
     }
   },
 }
