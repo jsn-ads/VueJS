@@ -1,12 +1,29 @@
 <template>
-    <h2>{{titulo}}</h2>
+    <div>
+        <h2>Lista de Posts</h2>
+        <!-- imprimi a lista de objetos do component filho -->
+        <PostItem
+            v-for="post in posts"
+            :key="post.id"
+            :post="post"
+        />
+    </div>
 </template>
 
-
 <script>
+
+// importa o component filho 
+
+import PostItem from './PostItem.vue';
+
 export default {
+    components:{
+        PostItem
+    },
+    // cria uma lista para receber os objetos do component filho
     props:{
-        titulo: String
+        posts: Array,
+        required: true
     }
 }
 </script>
