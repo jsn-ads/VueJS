@@ -26,11 +26,11 @@ export default {
           titulo: "Distribuiçãp conteudo com Slots",
           conteudo: "Slots podem ser usados como ",
           autor: "jose alves",
-        },
-      ],
-    };
-  },
-};
+        }
+      ]
+    }
+  }
+}
 </script>
 
 <style scoped>
