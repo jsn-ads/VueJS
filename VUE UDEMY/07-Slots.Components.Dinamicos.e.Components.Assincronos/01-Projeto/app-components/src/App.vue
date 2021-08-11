@@ -1,7 +1,22 @@
 <template>
   <div id="app" class="container">
     <h2>Projeto Vue</h2>
+
+    <h2>Forma padrao</h2>
+
     <Post :posts="posts" />
+
+    <hr>
+
+    <h2>Slots com escopo</h2>
+
+    <Post :posts="posts">
+      <template slot-scope="slotProps">
+        <h2>{{ slotProps.meuPost.titulo }}</h2>
+        <p>{{ slotProps.meuPost.conteudo }}</p>
+        <small>{{ slotProps.meuPost.autor }}</small>
+      </template>
+    </Post>
   </div>
 </template>
 
@@ -26,11 +41,11 @@ export default {
           titulo: "Distribuiçãp conteudo com Slots",
           conteudo: "Slots podem ser usados como ",
           autor: "jose alves",
-        }
-      ]
-    }
-  }
-}
+        },
+      ],
+    };
+  },
+};
 </script>
 
 <style scoped>

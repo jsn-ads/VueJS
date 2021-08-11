@@ -6,7 +6,9 @@
             v-for="post in posts"
             :key="post.id"
             :post="post"
-        />
+        >
+            <slot :meuPost="post"></slot>
+        </PostItem>
     </div>
 </template>
 
