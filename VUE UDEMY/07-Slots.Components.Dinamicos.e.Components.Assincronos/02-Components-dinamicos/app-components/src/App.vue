@@ -1,36 +1,31 @@
 <template>
   <div id="app" class="container">
-    <h2>Projeto Vue</h2>
+      <h1>Components Dinamicos</h1>
+      <button @click="selectComponent='Home'">Home</button>
+      <button @click="selectComponent='Post'">Post</button>
+      <button @click="selectComponent='Sobre'">Sobre</button>
 
-    <h2>Forma padrao</h2>
-
-    <Post :posts="posts" />
-
-    <hr>
-
-    <h2>Slots com escopo</h2>
-
-    <!-- cria um objeto e extrai o atributo meuPost criando na classe Post -->
-
-    <Post :posts="posts">
-      <template slot-scope="{meuPost}">
-        <h2>{{ meuPost.titulo }}</h2>
-        <p>{{ meuPost.conteudo }}</p>
-        <small>{{ meuPost.autor }}</small>
-      </template>
-    </Post>
+      <keep-alive>
+          <component :is="selectComponent" v-bind="selectProps"></component>
+      </keep-alive>
   </div>
 </template>
 
 <script>
+
 import Post from "./components/Post.vue";
+import Home from './components/Home.vue';
+import Sobre from './components/Sobre.vue'
 
 export default {
   components: {
     Post,
+    Home,
+    Sobre
   },
   data() {
     return {
+      selectComponent: 'Home',
       posts: [
         {
           id: 1,
@@ -45,8 +40,13 @@ export default {
           autor: "jose alves",
         },
       ],
-    };
+    }
   },
+  computed:{
+    selectProps(){
+      return this.selectComponent === 'Post' ? {posts: this.posts} : {}
+    }
+  }
 };
 </script>
 
