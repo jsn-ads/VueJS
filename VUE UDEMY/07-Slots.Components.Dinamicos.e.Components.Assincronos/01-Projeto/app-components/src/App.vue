@@ -6,10 +6,11 @@
 
     <Post :posts="posts" />
 
-    <hr>
+    <hr />
 
     <h2>Slots com escopo</h2>
 
+    
     <!-- cria um objeto e extrai o atributo meuPost criando na classe Post -->
 
     <Post :posts="posts">

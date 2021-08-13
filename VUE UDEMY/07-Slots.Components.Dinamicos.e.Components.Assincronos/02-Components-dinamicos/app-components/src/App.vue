@@ -5,7 +5,7 @@
       <button @click="selectComponent='Post'">Post</button>
       <button @click="selectComponent='Sobre'">Sobre</button>
 
-      <keep-alive>
+      <keep-alive :exclude="/Home|Post/">
           <component :is="selectComponent" v-bind="selectProps"></component>
       </keep-alive>
   </div>
