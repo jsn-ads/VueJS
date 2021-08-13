@@ -4,6 +4,7 @@
       <button @click="selectComponent='Home'">Home</button>
       <button @click="selectComponent='Post'">Post</button>
       <button @click="selectComponent='Sobre'">Sobre</button>
+      <button @click="selectComponent='Assincrono'">Assincrono</button>
 
       <keep-alive :exclude="/Home|Post/">
           <component :is="selectComponent" v-bind="selectProps"></component>
@@ -19,6 +20,17 @@ import Sobre from './components/Sobre.vue'
 
 export default {
   components: {
+    Assincrono : ()=>({
+      component: new Promise((resolve, reject) =>{
+        setTimeout( ()=>{
+            resolve(import('./components/Assincrono.vue'))
+        }, 2000)
+      }),
+      loading:{template: '<p>Carregando...</p>'},
+      error:{template: '<p>Erro no Carregamento</p>'},
+      delay:200,
+      timeout:3000
+    }),
     Post,
     Home,
     Sobre
