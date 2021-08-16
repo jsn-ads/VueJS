@@ -17,7 +17,7 @@
 
           <h3>Preencha abaixo</h3>
 
-          <form>
+          <form @submit.prevent="enviar">
 
             <div class="form-group">
               <label>Nome:</label>
@@ -82,8 +82,16 @@
 
             <div class="form-group">
               <label>Ocupação:</label>
-              <select class="form-control" placeholder="Seu email">
-                <option>Selecione uma opção...</option>
+              <select class="form-control" v-model="pessoa.ocupacao">
+                <option value="" disabled>Selecione uma opção...</option>
+                <option 
+                  v-for="(ocupacao, index) in ocupacoes"
+                  :key="index"
+                  :value="ocupacao"
+                  :selected="pessoa.ocupacao"
+                >
+                  {{ocupacao}}
+                </option>
               </select>
             </div>  
 
@@ -92,22 +100,42 @@
               <p>Tecnologias:</p>
 
               <div class="form-check form-check-inline">
-                <input type="checkbox" class="form-check-input" value="JavaScript">
+                <input 
+                  type="checkbox" 
+                  class="form-check-input" 
+                  value="JavaScript"
+                  v-model="pessoa.tecnologias"
+                >
                 <label class="form-check-label">JavaScript</label>
               </div>
 
-              <div class="form-check form-check-inline" value="Vue JS">
-                <input type="checkbox" class="form-check-input">
+              <div class="form-check form-check-inline">
+                <input 
+                  type="checkbox" 
+                  class="form-check-input"
+                  value="Vue JS"
+                  v-model="pessoa.tecnologias"
+                >
                 <label class="form-check-label">Vue JS</label>
               </div>
 
               <div class="form-check form-check-inline">
-                <input type="checkbox" class="form-check-input" value="Vuex">
+                <input 
+                  type="checkbox" 
+                  class="form-check-input" 
+                  value="Vuex"
+                  v-model="pessoa.tecnologias"
+                >
                 <label class="form-check-label">Vuex</label>
               </div>
 
               <div class="form-check form-check-inline">
-                <input type="checkbox" class="form-check-input" value="Vue Router">
+                <input 
+                  type="checkbox" 
+                  class="form-check-input" 
+                  value="Vue Router"
+                  v-model="pessoa.tecnologias"
+                >
                 <label class="form-check-label">Vue Router</label>
               </div>
 
@@ -124,16 +152,33 @@
             </div>
 
             <div class="form-group">
+              <Range
+                label="Salario Pretendido"
+                v-model.number="pessoa.salario"
+                min="1000"
+                max="5000"
+                step="500"
+                :estilo="[{'form-control-range':true}]"
+              />
+            </div>
+
+            <div class="form-group">
 
               <div class="form-check form-check-inline">
-                <input type="checkbox" class="form-check-input">
+                <input 
+                  type="checkbox" 
+                  class="form-check-input" 
+                  v-model="pessoa.notificacoes"
+                  true-value="sim"
+                  false-value="nao"
+                >
                 <label class="form-check-label">Receber notificações por email</label>
               </div>
 
             </div>
 
-            <button class="btn btn-secondary">Resetar</button>
-            <button class="btn btn-success">Enviar</button>
+            <button class="btn btn-secondary" type="button" @click="resetar()">Resetar</button>
+            <button class="btn btn-success" type="submit">Enviar</button>
 
           </form>
 
@@ -153,10 +198,20 @@
               <li class="list-group-item"><strong>Email: {{pessoa.email}}</strong> </li>
               <li class="list-group-item"><strong>Idade:  {{pessoa.idade}}</strong></li>
               <li class="list-group-item"><strong>Gênero:</strong> {{pessoa.genero}} </li>
-              <li class="list-group-item"><strong>Ocupação:</strong> </li>
-              <li class="list-group-item"><strong>Tecnologias:</strong> </li>
+              <li class="list-group-item"><strong>Ocupação: {{pessoa.ocupacao}}</strong> </li>
+              <li class="list-group-item"><strong>Tecnologias:</strong>
+                  <ul>
+                    <li 
+                      v-for="(tecnologia , index) in pessoa.tecnologias"
+                      :key="index"
+                    >
+                        {{tecnologia}}
+                    </li>
+                  </ul>
+               </li>
               <li class="list-group-item"><strong>Biografia:</strong> <pre>{{pessoa.descricao}}</pre> </li>
-              <li class="list-group-item"><strong>Receber notificações?</strong> </li>
+              <li class="list-group-item"><strong>Receber notificações?</strong> {{pessoa.notificacoes ? 'SIM' : 'NÃO'}} </li>
+              <li class="list-group-item"><strong>Salario Pretendido : </strong> R${{pessoa.salario}},00 </li>
             </ul>
 
             <div class="card-header">Model</div>
@@ -177,18 +232,49 @@
 </template>
 
 <script>
+
+import Range from './components/Range.vue'
+
 export default {
+
+  components:{
+      Range,
+  },
   data(){
     return {
-        pessoa : {
+
+        pessoa : {},
+        padrao : {
           nome : '',
           email : '', 
-          idade : 31,
+          idade : null,
           descricao : '',
-          genero: 'Masculino' 
-        }
+          genero: 'Masculino',
+          notificacoes: "nao",
+          tecnologias : [],
+          ocupacao : "",
+          salario : '1000'
+        },
+        ocupacoes : [
+          "Programador FRONT END",
+          "Programador BACK END",
+          "Programador FULL STACK",
+          "Programador MOBILE"
+        ]
     }
-  }
+  },
+  methods: {
+    enviar(){
+      const FormularioPessoa = Object.assign({} , this.pessoa)
+      console.log(FormularioPessoa)
+    },
+    resetar(){
+      this.pessoa = Object.assign({}, this.padrao);
+    }
+  },
+  created() {
+    this.resetar()
+  },
 }
 </script>
 
