@@ -10,6 +10,7 @@
     <div class="container">
 
         <div class="form-group">
+          <h3>Efeitos</h3>
           <select class="form-control" v-model="selecionar">
             <option value="fade">Fade</option>
             <option value="zoom">Zoom</option>
@@ -17,18 +18,30 @@
           </select>
         </div>
 
+        <div class="form-group">
+          <h3>Alertas</h3>
+          <select class="form-control" v-model="classes">
+            <option value="success">Sucesso</option>
+            <option value="warning">Alerta</option>
+            <option value="danger">Perigo</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <h3>Components Dinamicos</h3>
+          <select class="form-control" v-model="dinamicos">
+            <option value="AppHome">Home</option>
+            <option value="AppSobre">Sobre</option>
+          </select>
+        </div>
+
         <transition :name="selecionar" appear mode="out-in">
-          <div class="alert alert-primary" role="alert" v-if="mostrar" key="alerta">
-            <strong>primary</strong>
-          </div>
-
-          <div class="alert alert-warning" role="alert" v-else key="perigo">
-              <strong>Perigo</strong>
-          </div>
-
+          <div :class="alertas" :key="classes"><strong>Mensagens</strong></div>
         </transition>
 
-        <button type="button" class="btn btn-primary" @click="mostrar = !mostrar">elemento</button>
+        <transition :name="selecionar" appear mode="out-in">
+          <component :is="dinamicos"></component>
+        </transition>
 
     </div>
 
@@ -38,26 +51,28 @@
 
 <script>
 export default {
+
+  components:{
+    AppHome: ()=> import('./components/home.vue'),
+    AppSobre: ()=> import('./components/sobre.vue')
+  },
   data() {
     return {
-      mostrar: true,
-      selecionar : 'fade'
-
+      selecionar : 'fade',
+      classes : 'success',
+      dinamicos: 'AppHome'
     }
   },
-  methods: {
-
-  },
+  computed:{
+    alertas(){
+      return {
+        alert : true,
+        [`alert-${this.classes}`]:true
+      }
+    }
+  }
 }
 </script>
-
-
-<style>
-  body{
-    overflow:hidden;
-  }
-</style>
-
 
 <style scoped>
 
