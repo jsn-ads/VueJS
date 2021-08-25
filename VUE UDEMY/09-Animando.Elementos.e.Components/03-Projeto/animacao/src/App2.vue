@@ -21,24 +21,39 @@
             </div>
 
             <h3>Lista de Cursos</h3>
-            
-            <div class="form-group">
-                <transition-group tag="ul" class="list-group" name="list">
-                    <li
-                        v-for="(curso , indice) in cursos"
-                        :key="indice"
-                        class="list-group-item"
-                    >
-                        <span>{{curso}}</span>
-                        <button class="btn btn-danger btn-sm float-right" @click="excluir(indice)">X</button>
-                    </li>
-                </transition-group>
+
+
+            <div class="row">
+                <div class="col-sm-2">
+                    <button class='btn btn-info' @click="embaralhar" >Embaralhar</button>
+                </div>
+
+                <div class="col-sm-10">
+                    <div class="form-group">
+                        <transition-group tag="ul" class="list-group" name="list">
+                            <li
+                                v-for="(curso , indice) in cursos"
+                                :key="indice"
+                                class="list-group-item"
+                            >
+                                <span>{{curso}}</span>
+                                <button class="btn btn-danger btn-sm float-right" @click="excluir(indice)">X</button>
+                            </li>
+                        </transition-group>
+                    </div>
+                </div>
+
             </div>
+            
+            
         </div>
     </div>
 </template>
 
 <script>
+
+import {shuffle} from 'lodash'
+
 export default {
     data(){
         return{
@@ -61,6 +76,9 @@ export default {
         },
         excluir(indice){
             this.cursos.splice(indice , 1)
+        },
+        embaralhar(){
+            this.cursos = shuffle(this.cursos)
         }
     },  
 }
