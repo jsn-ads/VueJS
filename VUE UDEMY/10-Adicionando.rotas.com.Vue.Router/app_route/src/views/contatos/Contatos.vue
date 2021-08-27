@@ -1,5 +1,17 @@
 <template>
     <div>
-        <h3 class="font-weight-light">Contato</h3>
+        <ContatosLista/>
+        <router-view></router-view>
     </div>
 </template>
+
+<script>
+
+import ContatosLista from '../../components/contatos/contatoLista.vue'
+
+export default {
+    components:{
+        ContatosLista
+    }
+}
+</script>
