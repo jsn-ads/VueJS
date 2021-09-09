@@ -47,7 +47,7 @@ export default {
         },
         {
           id: 2,
-          titulo: "Distribuiçãp conteudo com Slots",
+          titulo: "Distribuição conteudo com Slots",
           conteudo: "Slots podem ser usados como ",
           autor: "jose alves",
         },

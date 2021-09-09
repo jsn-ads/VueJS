@@ -19,6 +19,25 @@ export default {
             type : Number,
             required : true
         }
+    },
+    data() {
+        return {
+            curso: 'curso de JS'
+        }
+    },
+    beforeRouteEnter (to, from, next) {
+        //verifica se usuario esta logado 'autenticado e utilizando event-bus.js'
+        if(to.query.autenticado === 'true'){
+            return next( (vm) =>{
+                console.log('Curso : ', vm.curso)
+            })
+        }
+
+        next('/contatos')
+    },
+    beforeRouteLeave (to, from, next) {
+        const confirmar = window.confirm('Deseja realmente sair ?')
+        next(confirmar)
     }
 }
 </script>
