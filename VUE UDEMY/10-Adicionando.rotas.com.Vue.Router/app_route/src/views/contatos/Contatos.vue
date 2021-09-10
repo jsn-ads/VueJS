@@ -5,20 +5,24 @@
         <!-- mostra detalhes do contato -->
         <router-view name="contato-detalhes"></router-view>
         <!-- router defaut -->
-        <router-view></router-view>
+
+        <transition name="slide" mode="out-in">
+            <router-view></router-view>
+        </transition>
+        
     </div>
 </template>
 
-<script>
+<style scoped>
+  
+  .slide-enter, .slide-leave-to{
+    transform: translateX(-50px);
+    opacity: 0;
+  }
 
-import ContatosLista from '../../components/contatos/contatoLista.vue'
+  .slide-enter-active, .slide-leave-active{
+    transition: all 0.3s;
+  }
 
-export default {
-    components:{
-        ContatosLista
-    },
-    props:[
-        'busca'
-    ]
-}
-</script>
+
+</style>

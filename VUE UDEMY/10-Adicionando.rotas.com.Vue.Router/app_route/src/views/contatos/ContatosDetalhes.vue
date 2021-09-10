@@ -1,12 +1,21 @@
 <template>
     <div>
-        <h3 class="font-weight-light">Contato id : {{id}}</h3>
-        <p>Parametros : {{parametros}}</p>
-        <router-link :to="`/contatos/${id}/editar`" class="btn btn-info">Editar</router-link>
+        <h3 class="font-weight-light">Nome : {{contato.nome}}</h3>
+        <p>Email : {{contato.email}}</p>
+        <button class="btn btn-secondary mr-2" @click="$router.back()">Voltar</button>
+        <router-link
+            :to="`/contatos/${id}/editar`"
+            class="btn btn-primary" 
+        >
+            Editar
+        </router-link>
     </div>
 </template>
 
 <script>
+
+import EventBus from '../../event-bus';
+
 export default {
     props: {
         id: {
@@ -16,13 +25,17 @@ export default {
     },
     data() {
         return {
-            parametros : this.$route.params
+            contato : undefined
         }
     },
+    beforeRouteEnter (to, from, next) {
+        next(vm =>{
+            vm.contato = EventBus.buscarContato(vm.id)
+        });
+    },
     beforeRouteUpdate(to, from, next){
-        console.log('beforeRouteUpdate')
-        this.parametros = to.params
-    
+        this.contato = EventBus.buscarContato(+to.params.id)
+        next()
     }
 }
 </script>

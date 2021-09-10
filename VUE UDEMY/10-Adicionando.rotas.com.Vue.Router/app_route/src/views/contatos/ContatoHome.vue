@@ -1,12 +1,20 @@
 <template>
     <div>
-        <h3 class="font-weight-light">Area de Contatos</h3> 
-        <p>Selecione um contato para mostra informaçoes</p>   
+        <!-- mostra a lista de contatos -->
+        <ContatosLista :busca="busca"/>   
     </div>
 </template>
 
 <script>
+
+import ContatosLista from '../../components/contatos/contatoLista.vue'
+
 export default {
-    
+    components:{
+        ContatosLista
+    },
+    props:[
+        'busca'
+    ]
 }
 </script>
