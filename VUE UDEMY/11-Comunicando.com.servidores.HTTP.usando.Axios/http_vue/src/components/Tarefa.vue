@@ -2,19 +2,23 @@
     <li class="list-group-item d-flex">
 
         <span>{{tarefa.titulo}}</span>
-        
+
         <span class="espacar"></span>
         <!-- css e texto dinamicos -->
         <button class="btn btn-sm mr-4" :class="classeCSS" :title="tituloBotao">
             <i class="fa fa-check"></i>
         </button>
         <!-- css e texto estaticos -->
-        <button class="btn btn-primary btn-sm mr-2" title="Editar">
+        <button 
+            class="btn btn-primary btn-sm mr-2" 
+            title="Editar"
+            @click="$emit('editar', tarefa)"
+        >
             <i class="fa fa-pencil-alt"></i>
         </button>
 
         <button class="btn btn-danger btn-sm" title="Deletar">
-            <i class="fa fa-trash"></i>
+            <i class="fa fa-trash"></i> 
         </button>
     
     </li>
