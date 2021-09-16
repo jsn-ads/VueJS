@@ -1,30 +1,20 @@
 {
   "tarefas": [
     {
-      "id": 1,
       "titulo": "Desenlvover FRONT END",
-      "concluido": true
+      "concluido": true,
+      "id": 1
     },
     {
       "titulo": "Desenvolver BACK END e FRONT",
-      "concluido": false,
+      "concluido": true,
       "id": 2
     },
     {
-      "id": 3,
-      "titulo": "Desenvolver DB",
-      "concluido": false
-    },
-    {
-      "titulo": "Desenvolver Vue kkkkk",
+      "titulo": "Densenvolver Vue",
       "concluido": true,
-      "id": 4
-    },
-    {
-      "titulo": "validado",
-      "concluido": false,
-      "id": 5
+      "id": 4,
+      "curso": "Vue JS"
     }
   ]
 }
-
