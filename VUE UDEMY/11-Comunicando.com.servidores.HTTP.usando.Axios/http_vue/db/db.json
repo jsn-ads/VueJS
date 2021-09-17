@@ -2,17 +2,19 @@
   "tarefas": [
     {
       "titulo": "Desenlvover FRONT END",
-      "concluido": true,
-      "id": 1
+      "concluido": false,
+      "id": 1,
+      "curso": "Vue JS"
     },
     {
       "titulo": "Desenvolver BACK END e FRONT",
-      "concluido": true,
-      "id": 2
+      "concluido": false,
+      "id": 2,
+      "curso": "Vue JS"
     },
     {
       "titulo": "Densenvolver Vue",
-      "concluido": true,
+      "concluido": false,
       "id": 4,
       "curso": "Vue JS"
     }
